@@ -7,6 +7,6 @@ Simple script to merge portraits into landscape wallpaper sizes
 4. Images are merged randomly.
 5. Output image are in the size of 1920x1080, and will be in the folder OutputFolder.
 6. If compatible input images are odd numbered, the right side of the final image will be a repeat of a random image.
-
+7. InputFolder and OutputFolder must be in the same directory as merge.py
 Commands:
 	`python merge.py <InputFolder> <OutputFolder>`
