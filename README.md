@@ -9,4 +9,4 @@ Simple script to merge portraits into landscape wallpaper sizes
 6. If compatible input images are odd numbered, the right side of the final image will be a repeat of a random image.
 
 Commands:
-	python merge.py <InputFolder> <OutputFolder>
+	`python merge.py <InputFolder> <OutputFolder>`
