@@ -10,3 +10,7 @@ Simple script to merge portraits into landscape wallpaper sizes
 
 Commands:
 	`python merge.py <InputFolder> <OutputFolder>`
+
+	
+Note:
+	Special characters in filenames are not supported in this version.

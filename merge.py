@@ -2,7 +2,7 @@ import cv2
 import os
 import sys
 import random
-
+import numpy
 
 desired_height = 1080
 desired_width = 960
@@ -35,9 +35,16 @@ def script(list):
 	global output_name
 	random.shuffle(list)
 	number_infiles = len(list)
+	#If only one file
+	if(number_infiles == 1):
+		print("There is only 1 applicable file! Outputing as it is. Output: " + str(output_name) + ".jpg")
+		new_im = resizeImgFull(os.path.join(in_pth, list[0]))
+		if not cv2.imwrite(os.path.join(out_pth, str(output_name) + '.jpg'), new_im):
+				raise Exception("Could not write image")
+		output_name = output_name + 1
 	#If odd number of input files
-	if not (number_infiles % 2 == 0):
-		print("ODD")
+	elif not (number_infiles % 2 == 0):
+		print("ODD with " + str(number_infiles) + " number of files!")
 		for file1,file2 in zip(list[0:-1:2], list[1::2]):
 			in_path1 = os.path.join(in_pth, file1)
 			in_path2 = os.path.join(in_pth, file2)
@@ -53,10 +60,12 @@ def script(list):
 		output_name = output_name + 1
 	
 	else:
-		print("EVEN")
+		print("EVEN with " + str(number_infiles) + " number of files!")
 		for file1,file2 in zip(list[0::2], list[1::2]):
 			in_path1 = os.path.join(in_pth, file1)
 			in_path2 = os.path.join(in_pth, file2)
+			print(in_path1)
+			print(in_path2)
 			concatImg(in_path1, in_path2, str(output_name) + '.jpg')
 			print("Concatenated " + file1 + " with " + file2 + ". Output: " + str(output_name) + ".jpg")
 			output_name = output_name + 1
@@ -64,6 +73,12 @@ def script(list):
 def checkReso(file):
 	global output_name
 	in_path = os.path.join(in_pth, file)
+	
+	#stream = open(in_path, 'rb')
+	#bytes = bytearray(stream.read())
+	#numpyarray = numpy.asarray(bytes, dtype=numpy.uint8)
+	#im = cv2.imdecode(numpyarray, cv2.IMREAD_UNCHANGED)
+	
 	im = cv2.imread(in_path)
 	#print(in_path)
 	#print(file[-4:])
@@ -95,6 +110,11 @@ def concatImg(im_pth1,im_pth2, outname):
 	return
 
 def resizeImgFull(imgpath): #used when image does not require merging
+	#stream = open(imgpath, 'rb')
+	#bytes = bytearray(stream.read())
+	#numpyarray = numpy.asarray(bytes, dtype=numpy.uint8)
+	#im = cv2.imdecode(numpyarray, cv2.IMREAD_UNCHANGED)
+	
 	im = cv2.imread(imgpath)
 	old_size = (im.shape[0],im.shape[1])
 	if(im.shape[1]/im.shape[0] > float(desired_width*2)/desired_height):
@@ -126,6 +146,10 @@ def resizeImgFull(imgpath): #used when image does not require merging
 	return new_im
 	
 def resizeImg(imgpath):
+	#stream = open(imgpath, 'rb')
+	#bytes = bytearray(stream.read())
+	#numpyarray = numpy.asarray(bytes, dtype=numpy.uint8)
+	#im = cv2.imdecode(numpyarray, cv2.IMREAD_UNCHANGED)
 	
 	im = cv2.imread(imgpath)
 	
@@ -192,7 +216,10 @@ for file in inlist:
 #Loop the input files
 #random.shuffle(inlist)
 
+print("\nPerforming merges with padding on top and bottom")
 script(list1)
+
+print("\nPerforming merges with padding on left and right")
 script(list2)
 
 
