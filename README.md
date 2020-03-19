@@ -16,11 +16,8 @@ Python3 with OpenCV2 is required.
 
 Run the command `python merge.py <InputFolder> <OutputFolder>`
 
-Commands:
-	`python merge.py <InputFolder> <OutputFolder>`
-
 ## Note
-	Special characters in filenames are not supported in this version.
+Special characters in filenames are not supported in this version.
 
 
 
