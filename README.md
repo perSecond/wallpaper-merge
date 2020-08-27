@@ -1,5 +1,5 @@
 # wallpaper-merge
-Simple script to merge portraits into landscape wallpaper sizes
+Simple script to merge 2 portrait images into landscape wallpaper sizes
 
 ## Documentation
 1. This code takes images from the InputFolder and merges them horizontally (left and right).
