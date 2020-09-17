@@ -1,6 +1,13 @@
 # wallpaper-merge
 Simple script to merge a bunch of portrait images into landscape wallpaper sizes, by random order.
-This tool is ideal to be used for a wallpaper slideshow.
+
+Portrait images does not look appealing to be set as a wallpaper, because of the large black paddings. 
+
+However many beautiful photos are taken in portrait mode and it is a waste to not be able to look at them as a wallpaper. 
+
+Why not merge 2 portrait photos together to become a landscape image, and reducing significantly the ugly black paddings?
+
+This tool is ideal to be used if there is a bunch of portrait images and the user wants to use them for a wallpaper slideshow.
 
 ## Documentation
 1. This code takes 2 random images from the InputFolder and merges them horizontally (left and right).
