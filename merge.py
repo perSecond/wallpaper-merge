@@ -4,6 +4,8 @@ import sys
 import random
 import numpy
 
+#Wallpaper Merge
+
 desired_height = 1080
 desired_width = 960
 max_ratio = 1
